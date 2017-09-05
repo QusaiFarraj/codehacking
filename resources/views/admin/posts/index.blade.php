@@ -2,6 +2,12 @@
 
 @section('content')
 
+    @if(Session::has('deleted_post'))
+
+        <p class="alert-danger">{{session('deleted_post')}}</p>
+
+    @endif
+
     <h1>Posts</h1>
 
     <table class="table">
@@ -25,9 +31,9 @@
                 <tr>
                     <td>{{$post->id}}</td>
                     <td><a href="{{route('posts.edit', $post->id)}}"> {{$post->title}}</a></td>
-                    <td>{{$post->body}}</td>
-                    <td><img height="50" width="50" src="{{$post->photo? $post->photo->file : "profile.png"}}"></td>
-                    <td>{{$post->category->name}}</td>
+                    <td>{{str_limit($post->body,30)}}</td>
+                    <td><img class="img-responsive img-rounded" height="75" width="75" src="{{$post->photo? $post->photo->file : "profile.png"}}"></td>
+                    <td>{{$post->category? $post->category->name : "Uncategorized"}}</td>
                     <td>{{$post->user->name}}</td>
                     <td>{{$post->created_at->diffForHumans()}}</td>
                     <td>{{$post->updated_at->diffForHumans()}}</td>
