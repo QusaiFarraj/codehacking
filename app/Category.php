@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class Category extends Model
 {
     //
 
@@ -13,4 +13,9 @@ class Role extends Model
         'name'
 
     ];
+
+    public function posts(){
+
+        return $this->hasMany('App\Post');
+    }
 }
