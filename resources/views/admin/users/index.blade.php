@@ -33,7 +33,7 @@
              <td><a href="{{route('users.edit', $user->id)}}"> {{$user->name}}</a></td>
              <td><img height="50" width="50" src="{{$user->photo? $user->photo->file : "profile.png"}}"></td>
              <td>{{$user->email}}</td>
-             <td>{{$user->role->name}}</td>
+             <td>{{$user->role ? $user->role->name : "No Role"}}</td>
                 <td>{{$user->is_active? 'Active' : 'Not Active'}}</td>
              <td>{{$user->created_at->diffForHumans()}}</td>
              <td>{{$user->updated_at->diffForHumans()}}</td>

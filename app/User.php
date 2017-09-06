@@ -57,4 +57,15 @@ class User extends Authenticatable
 
         return $this->hasMany('App\Photo');
     }
+
+
+    // creating a fake column to use it with Gravatar
+    public function getGravatarAttribute(){
+
+        $hash = md5(strtolower(trim($this->email))) . '?d=mm$s='; // '?d=mm$s='  just to show a mistery man pic.
+
+        return "http://www.gravatar.com/avatar/$hash";
+
+
+    }
 }
